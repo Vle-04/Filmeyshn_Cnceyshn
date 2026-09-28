@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineArchive</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- STICKY HEADER WITH SIDE-BY-SIDE BUTTONS -->
+    <header>
+        <a href="#" class="logo" onclick="filterCategory('all', this)">
+            <div class="logo-icon">▶</div>
+            <span>CineArchive</span>
+        </a>
+        
+        <div class="header-nav">
+            <button class="nav-btn active" onclick="filterCategory('all', this)">🎬 All Titles</button>
+            <button class="nav-btn" onclick="filterCategory('kubrick', this)">📽️ Kubrick Vault</button>
+            <button class="nav-btn" onclick="filterCategory('1990s', this)">📼 1990s Classics</button>
+            <button class="nav-btn" onclick="filterCategory('modern', this)">🚀 2000s-2026s</button>
+            <button class="nav-btn" onclick="filterCategory('serials', this)">📺 TV Serials</button>
+            <button class="nav-btn" onclick="filterCategory('comics', this)">🎨 Anime & Comics</button>
+            <button class="nav-btn" onclick="filterCategory('watchlist', this)">⭐ My Watchlist (<span id="watchlist-count">0</span>)</button>
+        </div>
+    </header>
+
+    <!-- SEARCH & ACTION CONTROLS -->
+    <div class="controls-bar">
+        <div class="search-box">
+            <input type="text" id="search-input" class="search-input" placeholder="Search by movie title, director, cast, or genre..." oninput="handleSearch()">
+        </div>
+        <button class="action-btn" onclick="surpriseMe()">🎲 Surprise Me</button>
+    </div>
+
+    
+    <!-- MAIN DISPLAY GRID -->
+    <main>
+        <div class="card-grid" id="movie-grid">
+            <!-- Dynamically Populated -->
+        </div>
+    </main>
+
+    <!-- MODAL POPUP FOR DETAILS -->
+    <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModalDirect()">&times;</button>
+            <h2 class="modal-title" id="m-title">Movie Title</h2>
+            <div class="modal-sub" id="m-sub">Director | Year | Rating</div>
+            
+            <div class="modal-section">
+                <h4>Plot & Synopsis</h4>
+                <p id="m-plot">Synopsis details go here...</p>
+            </div>
+
+            <div class="modal-section">
+                <h4>Trivia & Historical Impact</h4>
+                <p id="m-trivia">Trivia details go here...</p>
+            </div>
+
+            <div class="modal-section">
+                <h4>Cast & Key Creators</h4>
+                <p id="m-cast">Cast info goes here...</p>
+            </div>
+
+            <div class="modal-actions">
+                <button id="modal-watchlist-btn" class="action-btn" style="width: 100%;">
+                    + Add to Watchlist
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-container">
+  <!-- Section 1: Available Movies Catalog -->
+  <section class="catalog-section">
+    
+    <div id="movieGrid" class="movie-grid"></div>
+  </section>
+
+  <!-- Section 2: Watchlist Table Display -->
+  <section class="watchlist-section">
+    
+    <div id="watchlistContainer">
+      <table id="watchlistTable" class="watchlist-table" style="display: none;">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Release Year</th>
+            <th>Duration</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="watchlistBody"></tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 CineArchive. Complete Cinema & Pop-Culture Filmography (1990 - 2026).</p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script src="main.js"></script>
+</body>
+</html>
