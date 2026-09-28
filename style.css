@@ -17,6 +17,30 @@
             padding: 0;
         }
 
+        /* Logo Styling inside Header */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.app-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+/* Styled Heading for Watchlist inside controls-bar */
+.watchlist-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  padding-right: 15px;
+  border-right: 2px solid #334155;
+}
+
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
